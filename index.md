@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+## Fortran-jpについて
 
-You can use the [editor on GitHub](https://github.com/Fortran-jp/fortran-jp.org/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Fortranと聞いて何を思い浮かべるでしょうか？すべて大文字，パンチカード，学生の頃に習った等でしょうか．Fortran規格は現在も更新されていますが，オンライン／オフラインを問わずFortranに触れる機会自体が減少し，印象の善し悪し以前に，知らないあるいは昔の印象のまま固定化されていることが多いのではないかと思います．
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+これは海外でも状況は同じです．Fortranには広く横断的なコミュニティがないため，ユーザが孤立し，問題の解決法にたどり着けず，車輪の再実装が行われています．そして，それに疲弊したユーザがFortranから離れてしまうという分析が示され，Fortranユーザから多くの指示を集めています．この状況を改善するために，Fortran-langコミュニティが立ち上げられ，標準ライブラリ，パッケージマネージャ，モダンなコンパイラの開発が開始されました．コミュニティのリーダーの一人は，Fortranの現状に対して，次のように述べています．
 
-### Markdown
+“Fortranはうまくいっていません．ユーザは技術的および社会的理由でFortranから離れつつあります．しかし，我々は問題を特定し，それを修正する計画を立て，計画を実行しています．Fortran言語自体には根本的な問題はないと考えていますが，Fortranの若返りやツール開発が必要です．”
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+“Fortranを取り巻く雰囲気は変わり始めていますが，我々はまだ道半ばです．我々は可能な限りプロジェクトを前進させ続けます．可能であれば，Fortranを放棄するという決定を約3年延期してください。それまでに，すべてではないにしても，問題の多くを修正できると信じています．”
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Fortran-jp/fortran-jp.org/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Fortran-langコミュニティ活動に大いに賛同するとともに，Fortranの若返りの動きを日本でも推し進めたいと考え，Fortran-jpを立ち上げることとしました．
