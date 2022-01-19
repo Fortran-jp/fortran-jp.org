@@ -11,3 +11,5 @@ Fortranと聞いて何を思い浮かべるでしょうか？すべて大文字�
 Fortran-langコミュニティ活動に大いに賛同するとともに，Fortranの若返りの動きを日本でも推し進めたいと考え，Fortran-jpを立ち上げることとしました．
 
 [勉強会](./usergroup/usergroup.md)
+
+[コーディングスタイル](./codingstyle/codingstyle.md)
