@@ -10,7 +10,7 @@
 
 primeという名前のモジュールの中に，generate_primeという関数を作成します．入力は正の整数で，戻り値は整数の配列とします．
 
-```
+```Fortran
 program main
     use, intrinsic :: iso_fortran_env
     use :: prime
@@ -29,7 +29,7 @@ end program main
 
 まずは素直に実装します．
 
-```
+```Fortran
 module prime
     implicit none
     private
@@ -97,7 +97,7 @@ end module prime
 
 2からnumまでの数表numberを作ります．このとき，配列添字と配列に保持される数字を対応させるために，配列添字を2:numとして割り付けています． 
 
-```
+```Fortran
 allocate (number(2:num))
 
 initialize: block
@@ -113,7 +113,7 @@ end block initialize
 
 数表numberを作った後，2からnumの平方根までを素数の候補として，その倍数を0で置き換えます．これは0である必要はなく，1でも-1でもよいのですが，0以外が用いられている例は見たことがりません． 
 
-```
+```Fortran
 sieve: block
     integer(int32) :: i, prime_candidate
     do prime_candidate = 2, int(num**0.5)
@@ -135,7 +135,7 @@ end block sieve
 
 手続きとしては，まず数表numberの非ゼロの要素数を数え，その数で整数型配列primesを割り付けます．その後，再び数表内の非ゼロ要素を探し，その都度素数表primesにコピーします．
 
-```
+```Fortran
 extract: block
     integer(int32) :: i, j, num_nonzero
 
@@ -168,7 +168,7 @@ Fortranでは，関数内で宣言されたallocatableな変数は，関数か�
 
 前節ではエラトステネスのふるいを素直に実装しましたが，Fortranの機能を用いると，ソースを簡略化できます． 
 
-```
+```Fortran
     function generate_prime(num) result(primes)
         use, intrinsic :: iso_fortran_env
         implicit none
@@ -198,7 +198,7 @@ Fortranでは，関数内で宣言されたallocatableな変数は，関数か�
 
 ## 初期化
 
-```
+```Fortran
 allocate (number(2:num), source=[(i, i=2, num)])
 ```
 
@@ -206,7 +206,7 @@ allocate (number(2:num), source=[(i, i=2, num)])
 
 ## ふるい落とし
 
-```
+```Fortran
 do i = 2, int(num**0.5)
     if (number(i) /= 0) then
         number(i+i::i) = 0
@@ -218,7 +218,7 @@ end do
 
 ## 素数の抽出
 
-```
+```Fortran
 primes = pack(array=number, mask=(number /= 0))
 ```
 
@@ -232,7 +232,7 @@ arrayに指定した配列のうち，maskが真になる位置の要素だけ�
 
 Fortranでは，論理値を用いる実装も簡単です
 
-```
+```Fortran
     function generate_prime(num) result(primes)
         use, intrinsic :: iso_fortran_env
         implicit none
@@ -295,7 +295,7 @@ Fortranでは，論理値を用いる実装も簡単です
 
 3.についても，内部関数を導入することで，一読した際に何をしているかが明確になるようにします．
 
-```
+```Fortran
 module prime
     use, intrinsic :: iso_fortran_env
     implicit none
@@ -382,13 +382,13 @@ end module prime
 
 関数名を変更することで，100までの素数を作る事が明確になりました． 
 
-```
+```Fortran
 primes = generate_primes_up_to(100)
 ```
 
 手続きを導入することで，素数を求める処理が，初期化，ふるい落とし，素数の抽出の三つからなることがわかりやすくなりました．
 
-```
+```Fortran
 call initialize(number)
 
 call sieve()
@@ -412,7 +412,7 @@ primes = extract_primes()
 
 また，モジュール変数numは，数表における最大値を意味しているので，maximun_value_of_number_listに変更します．
 
-```
+```Fortran
 module prime
     use, intrinsic :: iso_fortran_env
     implicit none
@@ -527,7 +527,7 @@ iは素数か？ではなく，iは数表で✕が付けられているか？（
 
 pack関数がわかりにくいという場合は，再自動割付配列を利用して書き直すことができます．
 
-```
+```Fortran
         ! primes = pack(array=[(i, i=min_val, maximun_value_of_number_list)], mask=(.not. crossed_out))
         primes = [integer ::] ! 整数型，長さ0の配�-�'割り��'る
         do i = min_val, maximun_value_of_number_list
@@ -541,7 +541,7 @@ pack関数がわかりにくいという場合は，再自動割付配列を利�
 
 条件式には否定形よりも肯定形を用いるのが良いとされています．そのため，if(.not. crossed_out(i))とならないように，モジュール関数uncrossedを作成して，条件式が肯定形になるようにします．
 
-```
+```Fortran
     logical function uncrossed(list_position)
         use, intrinsic :: iso_fortran_env
         implicit none
@@ -557,7 +557,7 @@ pack関数がわかりにくいという場合は，再自動割付配列を利�
 
 モジュール中に出てくるif(.not. crossed_out(i))をif(uncrossed(i))に置き換えれば完成です．
 
-```
+```Fortran
 module prime
     use, intrinsic :: iso_fortran_env
     implicit none
